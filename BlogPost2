@@ -1,0 +1,71 @@
+Before beginning the process of building on to the current functionality of SQUID Web, an issue must be addressed within the application where the client-side server and the backend server are facing connectivity issues. The client-side of SQUID Web uses NGINX, while the backend uses Tomcat. Thus, a reverse proxy exists where redirection takes place from NGINX to Tomcat. Currently, something is blocked, preventing these two servers from connecting. This blog post will discuss this troubleshooting process. Here is a list of some of the commands used in this process: 
+
+Tomcat Commands: 
+ 
+Start / Shutdown TomCat: 
+cd /Users/caitlin/apache-tomcat-9.0.34/bin 
+./startup.sh 
+OR
+./shutdown.sh 
+ 
+Stop Tomcat: 
+Tomcat config: 
+Users/caitlin/apache-tomcat-9.0.34/server.xml
+ 
+NGINX Commands: 
+ 
+Opens config file: 
+nano /usr/local/etc/nginx/nginx.conf
+ 
+Or use 
+/usr/local/etc/nginx/
+ 
+Start/ Stop: 
+ sudo brew services start nginx
+ sudo brew services stop nginx
+ 
+If the above do not work/ stubborn process: 
+ 
+sudo nginx -s quit
+ 
+Load/ Unload*:
+launchctl unload /usr/local/cellar/nginx/1.17.10/homebrew.mxcl.nginx.plist
+launchctl load /usr/local/cellar/nginx/1.17.10/homebrew.mxcl.nginx.plist
+ 
+ 
+Test NGINX configuration: 
+sudo nginx -t
+
+
+Troubleshooting Process and Research 
+
+As we know that this issue involves NGIX failing to redirect to Tomcat properly. One possible solution to address this is to add the following to the NGINX config file: 
+
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name localhost; 
+
+    location / {
+            proxy_redirect      off;
+            proxy_set_header    X-Real-IP $remote_addr;
+            proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header    X-Forwarded-Proto $scheme;
+            proxy_set_header    Host $host;
+            proxy_pass          tomcatIPaddress; 
+    }
+}
+
+
+Currently, existing redirects are not specified, which could potentially pose an issue. 
+
+
+The console errors associated with SQUID Web point towards bundle.js, as well as a connection refused error to localhost:8383/CirdlesWebUI. These errors could point to an issue with the proxy server. 
+
+Potential further items: 
+•	Check to see if anything is set up on an address that shouldn’t be. 
+•	Research configuring using a URI. 
+
+
+As this process continues, a solution should be reached soon. 
