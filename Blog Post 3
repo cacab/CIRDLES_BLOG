@@ -1,1 +1,13 @@
 This post discusses the debugging of SQUID Web, running locally. 
+
+In Chrome, upon attempting to upload Prawn and Task files, the following error is generated: 
+
+Access to XMLHttpRequest at 'http://cirdles.cs.cofc.edu/Services/squidReporting' from origin 'http://localhost:8080' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+
+The following items fix this error: 
+
+In /usr/local/etc/nginx/nginx.conf, change the port from 80 to 8080. 
+
+In Squid/index.js, change the endpoint to https://cirdles.cs.cofc.edu/Services/squidReporting. 
+
+In Chrome, download the Moesif CORS extension, and make sure it is switched "ON". 
