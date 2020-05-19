@@ -10,4 +10,6 @@ In /usr/local/etc/nginx/nginx.conf, change the port from 80 to 8080.
 
 In Squid/index.js, change the endpoint to https://cirdles.cs.cofc.edu/Services/squidReporting. 
 
-In Chrome, download the Moesif CORS extension, and make sure it is switched "ON". 
+In Chrome, unblock CORS by a method of your choosing, such as CORS Unblock. 
+
+My next blog post will explore how to unblock CORS without using a plugin. 
