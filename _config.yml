@@ -3,3 +3,5 @@ title: Caitlin's Blog
 description: Independent Study Summer 2020
 paginate_path: /posts/
 plugins: [jekyll-paginate]
+paginate_path: "/archive/"
+
