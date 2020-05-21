@@ -3,7 +3,20 @@ layout: default
 ---
 <body>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+<h3>Blog Post #1 SQUID Architecture 5.11.2020</h3>
+<p>At this time, SQUID’s architecture involves the use of NGINX and Tomcat. Research implemented will explore the possibility of using these same architectures or changing the Servlets entirely. The research process behind this decision is outlined in this blog post. 
+Currently SQUID uses NGINX on the client-side of the web application, and Tomcat to execute backend functionality. In this case, the use of a reverse proxy servlet keeps utilization centralized. However, the need to create login sessions brings into question what the right steps are to add this functionality. 
+It is possible to add login functionality and session management to this current architecture. However, there exist other architectures that could be implemented as opposed to the existing servlets. This post will outline the guidelines that will be considered when researching login session capabilities and possible changes to architecture, as well as options that will allow for more robust functionality. 
+Ideally, changes in architecture that build onto the existing servlets should be considered first. While it is possible to change the architecture of SQUID entirely, there already exists a foundation that can be built upon. The following options have been featured in this post based on the plausibility of their implementation. 
+
+Option 1: Store sessions in Redis. 
+Redis is a data structure store that is typically used as a database, cache, and message broker. Redis stands for remote dictionary server, and in this case, Tomcat would be configured to store its sessions in Redis, and NGIX could still be used as a reverse proxy. Currently this option makes the most sense for adding functionality to SQUID. 
+
+Option 2: Add functionality using Spring Boot. 
+This option would require that SQUID is reconfigured as a Spring Boot application. This reconfiguring process would involve the creation of a controller package. Due to the implementation of JavaFX, the IDE of choice for the CIRDLES lab is Netbeans. This option would also require the installation and configuration of the Spring Boot plugin for Netbeans, as well. This would also require Spring Boot to be configured into both Tomcat and NGINX. 
+
+Option 3: Change the architecture entirely. 
+While this option is the broadest one. There are several possibilities that could be implemented. As SQUID is written in Java, HTTP Session can be added, and the functionality of Tomcat can be expanded, or a JSP can be used. Other possible architecture solutions include Apache HTTP Server Project, Mongoose, or even Rwasa. 
+</p>
 
 </body>
