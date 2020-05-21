@@ -3,12 +3,27 @@ layout: default
 ---
 <body>
   
-      <h3>Blog Post #4 SQUID Architecture 5.21.2020</h3>
+      <h3>Blog Post #4 Solution to CORS Error: SQUID Web Part 2 5.21.2020</h3>
   
   
   <br>
-    <h3>Blog Post #3 SQUID Architecture 5.18.2020</h3>
-  
+    <h3>Blog Post #3 Solution to CORS Error: SQUID Web Part 1 5.18.2020</h3>
+<p>This post discusses the debugging of SQUID Web, running locally. </p>
+<p></p>
+<p>In Chrome, upon attempting to upload Prawn and Task files, the following error is generated: </p>
+<p></p>
+<p>Access to XMLHttpRequest at 'http://cirdles.cs.cofc.edu/Services/squidReporting' from origin 'http://localhost:8080' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource.</p>
+<p></p>
+<p>The following items fix this error: </p>
+<p></p>
+<p>In /usr/local/etc/nginx/nginx.conf, change the port from 80 to 8080. </p>
+<p></p>
+<p>In Squid/index.js, change the endpoint to https://cirdles.cs.cofc.edu/Services/squidReporting. </p>
+<p></p>
+<p>In Chrome, unblock CORS by a method of your choosing, such as CORS Unblock. </p>
+<p></p>
+<p>My next blog post will explore how to unblock CORS without using a plugin. </p>
+<p></p>
   
    <br> 
   <h3>Blog Post #2 Troubleshooting SQUID Architecture Locally 5.14.2020</h3>
