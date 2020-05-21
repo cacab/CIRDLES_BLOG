@@ -1,6 +1,6 @@
 theme: jekyll-theme-minimal
 title: Caitlin's Blog
-description: Independent Study Summer 2020- CIRDLES Lab
+description: Independent Study Summer 2020  CIRDLES Lab
 paginate_path: /posts/
 plugins: [jekyll-paginate]
 
