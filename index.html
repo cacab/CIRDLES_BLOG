@@ -11,8 +11,78 @@ layout: default
   
   
    <br> 
-  <h3>Blog Post #2 SQUID Architecture 5.14.2020</h3>
-  
+  <h3>Blog Post #2 Troubleshooting SQUID Architecture Locally 5.14.2020</h3>
+<p>Before beginning the process of building on to the current functionality of SQUID Web, an issue must be addressed within the application where the client-side server and the backend server are facing connectivity issues. The client-side of SQUID Web uses NGINX, while the backend uses Tomcat. Thus, a reverse proxy exists where redirection takes place from NGINX to Tomcat. Currently, something is blocked, preventing these two servers from connecting. This blog post will discuss this troubleshooting process. Here is a list of some of the commands used in this process: </p>
+<p></p>
+<p>Tomcat Commands: </p>
+<p> </p>
+<p>Start / Shutdown TomCat: </p>
+<p>cd /Users/caitlin/apache-tomcat-9.0.34/bin </p>
+<p>./startup.sh </p>
+<p>OR</p>
+<p>./shutdown.sh </p>
+<p> </p>
+<p>Stop Tomcat: </p>
+<p>Tomcat config: </p>
+<p>Users/caitlin/apache-tomcat-9.0.34/server.xml</p>
+<p> </p>
+<p>NGINX Commands: </p>
+<p> </p>
+<p>Opens config file: </p>
+<p>nano /usr/local/etc/nginx/nginx.conf</p>
+<p> </p>
+<p>Or use </p>
+<p>/usr/local/etc/nginx/</p>
+<p> </p>
+<p>Start/ Stop: </p>
+<p> sudo brew services start nginx</p>
+<p> sudo brew services stop nginx</p>
+<p> </p>
+<p>If the above do not work/ stubborn process: </p>
+<p> </p>
+<p>sudo nginx -s quit</p>
+<p> </p>
+<p>Load/ Unload*:</p>
+<p>launchctl unload /usr/local/cellar/nginx/1.17.10/homebrew.mxcl.nginx.plist</p>
+<p>launchctl load /usr/local/cellar/nginx/1.17.10/homebrew.mxcl.nginx.plist</p>
+<p> </p>
+<p> </p>
+<p>Test NGINX configuration: </p>
+<p>sudo nginx -t</p>
+<p></p>
+<p></p>
+<p>Troubleshooting Process and Research </p>
+<p></p>
+<p>As we know that this issue involves NGIX failing to redirect to Tomcat properly. One possible solution to address this is to add the following to the NGINX config file: </p>
+<p></p>
+<p></p>
+<p>server {</p>
+<p>    listen 80;</p>
+<p>    listen [::]:80;</p>
+<p>    server_name localhost; </p>
+<p></p>
+<p>    location / {</p>
+<p>            proxy_redirect      off;</p>
+<p>            proxy_set_header    X-Real-IP $remote_addr;</p>
+<p>            proxy_set_header    X-Forwarded-For $proxy_add_x_forwarded_for;</p>
+<p>            proxy_set_header    X-Forwarded-Proto $scheme;</p>
+<p>            proxy_set_header    Host $host;</p>
+<p>            proxy_pass          tomcatIPaddress; </p>
+<p>    }</p>
+<p>}</p>
+<p></p>
+<p></p>
+<p>Currently, existing redirects are not specified, which could potentially pose an issue. </p>
+<p></p>
+<p></p>
+<p>The console errors associated with SQUID Web point towards bundle.js, as well as a connection refused error to localhost:8383/CirdlesWebUI. These errors could point to an issue with the proxy server. </p>
+<p></p>
+<p>Potential further items: </p>
+<p>•	Check to see if anything is set up on an address that shouldn’t be. </p>
+<p>•	Research configuring using a URI. </p>
+<p></p>
+<p></p>
+<p>As this process continues, a solution should be reached soon. </p>
   
   
   <br>
