@@ -4,7 +4,31 @@ layout: default
 <body>
   
       <h3>Blog Post #4 Solution to CORS Error: SQUID Web Part 2 5.21.2020</h3>
-  <p>POST PENDING- Check back at 11:30 PM EST.</p>
+<p>In Chrome, upon attempting to upload Prawn and Task files, the following error is generated:</p>
+<p>Access to XMLHttpRequest at 'http://cirdles.cs.cofc.edu/Services/squidReporting' from origin 'http://localhost:8080' has been blocked by CORS policy: Response to preflight request doesn't pass access control check: No 'Access-Control-Allow-Origin' header is present on the requested resource. </p>
+<p>CORS stands for cross-origin resource sharing and allows for cross-domain communication from the browser. The current issue is that somewhere within SQUID’s architecture, CORS is not enabled. </p>
+<p>Currently, the CORS error can be mitigated by the use of a browser plugin. </p>
+<p></p>
+<p>The following items have been implemented in an attempt to eliminate the error and the use of a browser plugin: </p>
+<p></p>
+<p>Enabling CORS in NGINX by using add_header Access-Control-Allow-Origin *;</p>
+<p></p>
+<p>Enabling CORS in Tomcat by using the following: </p>
+<p><filter></p>
+<p>   <filter-name>CorsFilter</filter-name></p>
+<p>   <filter-class>org.apache.catalina.filters.CorsFilter</filter-class></p>
+<p> </filter></p>
+<p> <filter-mapping></p>
+<p>   <filter-name>CorsFilter</filter-name></p>
+<p>   <url-pattern>/*</url-pattern></p>
+<p> </filter-mapping></p>
+<p></p>
+<p></p>
+<p>Potential further items:</p>
+<p>Research effective security practices to use when enabling CORS</p>
+<p>Research the possibility of enabling CORS at the web application level in routes or servlets. </p>
+<p>Research additional server configurations </p>
+
   
   
   <br>
