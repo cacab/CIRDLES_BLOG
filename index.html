@@ -3,6 +3,40 @@ layout: default
 ---
 <body>
   
+  
+ <h3>Blog Post #6 Addition CORS Troubleshooting and Research 5.29.2020</h3>
+<p>Previous actions taken to troubleshoot the problem: </p>
+<p></p>
+<p>-Modified nginx.conf using the following</p>
+<p>https://enable-cors.org/server_nginx.html</p>
+<p></p>
+<p>-Enable CORS using npm install cors </p>
+<p></p>
+<p>-Modified  the web.xml file located at /Users/caitlin/apache-tomcat-9.0.34/webapps/examples/WEB-INF/web.xml and added the following: </p>
+<p>http://docs.safe.com/fme/2013/html/FME_Server_DevGuide/Content/Configuring_CORS_Filtering.htm</p>
+<p></p>
+<p></p>
+<p>-I also tried to add the above filter enabling to the web.xml file located in conf, which ideally would enable CORS across all web apps</p>
+<p></p>
+<p></p>
+<p>-Debugging with chrome dev tools. As you can see from the below screenshot, the POST method is failing from https://cirdles.cs.cofc.edu/Services/squidReporting. </p>
+<p></p>
+<p></p>
+  <img src="https://drive.google.com/file/d/15rCGLMJ2Jgq-o3ZDV95Gg3IUpw0e2h9Y/view?usp=sharing" alt="Flowers in Chania">
+<p></p>
+<p>Next steps: </p>
+<p></p>
+<p>-Currently, I am enabling CORS through a plugin called Moesif CORS, which works by enabling CORS at the browser level. </p>
+<p></p>
+<p>-We now know that any CORS request has to be preflighted if the POST request sends an XML payload to the server. In this case, this could be possible source of the CORS error. More research will be done on this. </p>
+<p></p>
+<p>-Revisit configuring CORS within the application itself using a source such as the following: https://expressjs.com/en/resources/middleware/cors.html</p>
+<p></p>
+<p>-Additional sources: </p>
+<p>https://groups.google.com/forum/#!topic/cornerstone-platform/h0HuC2yvT6w</p>
+
+
+  <br>
 <h3>Blog Post #5 Docker and Kubernetes- Possibility For User Sessions 5.26.2020</h3>
 <p>This past Friday, I had the pleasure of attending a webinar hosted by Brent Lastner and Open Source 101. This webinar focused on the use of Docker and Kubernetes and their basics. In short, Docker is a platform-as-a-service product that uses images, which are made of layers which are generated from the Docker file. Multiple containers can share access to the same underlying image, which is a convenient tool that allows for reusability. </p>
 <p></p>
