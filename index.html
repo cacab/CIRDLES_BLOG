@@ -2,8 +2,28 @@
 layout: default
 ---
 <body>
-  
+  <br> 
 
+<h3>Blog Post #11 Docker, MongoDB and Tomcat 06.15.2020</h3>
+
+<p>This week, I have been researching the implementation of MongoDB in conjunction with Tomcat, using Docker as an object pool, as well as adding onto the demo application mentioned in my previous posts.</p>
+
+<p>This post will discuss these aforementioned research items. </p>
+<p> </p>
+
+
+<p>Using Docker as an object factory:</p>
+
+<p>The implementation of Docker we are aiming for is to use Docker as something similar to an object factory for sessions. When a user is using SQUID, a new session created. When the user is done using the application, the session is then discarded. </p>
+<p>A Docker registry would allow us to do just this. https://docs.docker.com/registry/deploying/
+</p>
+<p> </p>
+<p>Using MongoDB and Tomcat together::</p>
+
+<p>By itself, MongoDB can run without a server. However, in practice, using a server or servlet such as Tomcat can prove advantageous to house databases and their data. http://plindenbaum.blogspot.com/2010/09/using-mongodb-with-apache-tomcat.html
+</p>
+
+<br>
   <h3>Blog Post #10 Building File Application and Adding Functionality to SQUID 06.12.2020</h3>  
   <p>Side application that uses MERN (MongoDB, Express, React, NodeJs) At this time there is login functionality and the ability to upload files and store them on the server will be added shortly! </p>
   <iframe src="https://drive.google.com/file/d/1TET0Lcp-V1pXb0YqV5tLKVbJ7DZ7akn0/preview" width="640" height="480"></iframe>
